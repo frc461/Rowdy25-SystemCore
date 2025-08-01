@@ -12,30 +12,35 @@ import com.ctre.phoenix6.Orchestra;
 import com.ctre.phoenix6.Utils;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
-import com.ctre.phoenix6.swerve.*;
-
+import com.ctre.phoenix6.swerve.SwerveDrivetrain;
+import com.ctre.phoenix6.swerve.SwerveModule;
+import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.config.PIDConstants;
 import com.pathplanner.lib.controllers.PPHolonomicDriveController;
+
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
+import static edu.wpi.first.units.Units.Amps;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.DriverStation.Alliance;
-import edu.wpi.first.wpilibj2.command.*;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.Subsystem;
+import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.RobotStates;
+import frc.robot.commands.auto.SearchForObjectCommand;
 import frc.robot.commands.drive.DirectMoveToPoseCommand;
+import frc.robot.commands.drive.DriveCommand;
 import frc.robot.commands.drive.PathfindToPoseAvoidingReefCommand;
 import frc.robot.constants.Constants;
-import frc.robot.commands.drive.DriveCommand;
-import frc.robot.commands.auto.SearchForObjectCommand;
-import frc.robot.subsystems.localizer.Localizer;
 import frc.robot.constants.RobotPoses;
+import frc.robot.subsystems.localizer.Localizer;
 import frc.robot.util.FieldUtil;
 import frc.robot.util.vision.PhotonUtil;
-
-import static edu.wpi.first.units.Units.Amps;
 
 /**
  * Class that extends the Phoenix 6 SwerveDrivetrain class and implements
@@ -137,8 +142,8 @@ public class Swerve extends SwerveDrivetrain<TalonFX, TalonFX, CANcoder> impleme
             moduleStuck.add(
                     new Trigger((motorStalling)).debounce(0.25).and(() -> {
                         ChassisSpeeds speeds = getState().Speeds;
-                        double velocityMagnitude = Math.hypot(speeds.vxMetersPerSecond, speeds.vyMetersPerSecond);
-                        double rotVel = speeds.omegaRadiansPerSecond;
+                        double velocityMagnitude = Math.hypot(speeds.vx, speeds.vy);
+                        double rotVel = speeds.omega;
                         return velocityMagnitude < 0.1 && rotVel < 0.25;
                     })
             );

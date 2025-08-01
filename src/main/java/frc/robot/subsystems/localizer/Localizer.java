@@ -1,5 +1,8 @@
 package frc.robot.subsystems.localizer;
 
+import java.util.List;
+import java.util.Optional;
+
 import edu.wpi.first.math.Pair;
 import edu.wpi.first.math.estimator.SwerveDrivePoseEstimator;
 import edu.wpi.first.math.geometry.Pose2d;
@@ -7,6 +10,7 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform2d;
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.math.util.Units;
+import static edu.wpi.first.units.Units.Meters;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -15,15 +19,11 @@ import frc.robot.RobotStates;
 import frc.robot.constants.Constants;
 import frc.robot.constants.RobotPoses;
 import frc.robot.subsystems.drivetrain.Swerve;
-import frc.robot.util.*;
+import frc.robot.util.EstimatedRobotPose;
+import frc.robot.util.FieldUtil;
 import frc.robot.util.vision.LimelightUtil;
 import frc.robot.util.vision.PhotonUtil;
 import frc.robot.util.vision.QuestNavUtil;
-
-import java.util.List;
-import java.util.Optional;
-
-import static edu.wpi.first.units.Units.Meters;
 
 public class Localizer {
     private enum LocalizationStrategy {
@@ -284,9 +284,9 @@ public class Localizer {
         }
         if (!hasCalibratedOnceWhenNear) {
             if (LimelightUtil.isTagClear() && PhotonUtil.BW.isTagClear()
-                    && this.swerve.getState().Speeds.vxMetersPerSecond == 0
-                    && this.swerve.getState().Speeds.vyMetersPerSecond == 0
-                    && Math.abs(this.swerve.getState().Speeds.omegaRadiansPerSecond) == 0) {
+                    && this.swerve.getState().Speeds.vx == 0
+                    && this.swerve.getState().Speeds.vy == 0
+                    && Math.abs(this.swerve.getState().Speeds.omega) == 0) {
                 configureQuestOffset();
                 hasCalibratedOnceWhenNear = true;
             }

@@ -1,5 +1,10 @@
 package frc.robot.commands.auto;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.function.BooleanSupplier;
+
 import com.ctre.phoenix6.swerve.SwerveRequest;
 import com.pathplanner.lib.commands.FollowPathCommand;
 import com.pathplanner.lib.config.PIDConstants;
@@ -9,6 +14,7 @@ import com.pathplanner.lib.events.Event;
 import com.pathplanner.lib.events.OneShotTriggerEvent;
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.trajectory.PathPlannerTrajectory;
+
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.util.function.BooleanConsumer;
@@ -18,9 +24,6 @@ import edu.wpi.first.wpilibj2.command.WrapperCommand;
 import frc.robot.constants.Constants;
 import frc.robot.subsystems.drivetrain.Swerve;
 import frc.robot.util.vision.PhotonUtil;
-
-import java.util.*;
-import java.util.function.BooleanSupplier;
 
 public class FollowPathRequiringAlgaeCommand extends FollowPathCommand {
     private final Timer timer = new Timer();
@@ -88,7 +91,7 @@ public class FollowPathRequiringAlgaeCommand extends FollowPathCommand {
 
         Pose2d currentPose = swerve.localizer.getStrategyPose();
         ChassisSpeeds currentSpeeds = swerve.getKinematics().toChassisSpeeds(swerve.getState().ModuleStates);
-        double linearVel = Math.hypot(currentSpeeds.vxMetersPerSecond, currentSpeeds.vyMetersPerSecond);
+        double linearVel = Math.hypot(currentSpeeds.vx, currentSpeeds.vy);
         if (this.path.getIdealStartingState() != null) {
             boolean idealVelocity = Math.abs(linearVel - this.path.getIdealStartingState().velocityMPS()) <= (double)0.25F;
             boolean idealRotation = !this.robotConfig.isHolonomic || Math.abs(currentPose.getRotation().minus(this.path.getIdealStartingState().rotation()).getDegrees()) <= (double)30.0F;
