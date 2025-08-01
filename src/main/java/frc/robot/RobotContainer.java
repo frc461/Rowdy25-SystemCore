@@ -1,5 +1,7 @@
 package frc.robot;
 
+import javax.sound.sampled.ReverbType;
+
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.FollowPathCommand;
 import com.pathplanner.lib.commands.PathfindingCommand;
@@ -40,7 +42,7 @@ public class RobotContainer {
         configureButtonBindings();
 
         DogLog.setOptions(new DogLogOptions(() -> false, false, true, true, false, 5000, () -> false));
-        DogLog.setPdh(new PowerDistribution());
+        DogLog.setPdh(new PowerDistribution(0, 0, PowerDistribution.ModuleType.kRev));
         
         Pathfinding.setPathfinder(new LocalADStar());
         PathfindingCommand.warmupCommand().schedule();
