@@ -25,6 +25,6 @@ public class Lights {
         }
 
         lights.setData(buffer);
-        lights.start();
+        lights.setStart(2);
     }
 }    
