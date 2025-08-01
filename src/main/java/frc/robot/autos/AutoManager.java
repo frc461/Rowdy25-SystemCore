@@ -3,17 +3,21 @@ package frc.robot.autos;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 import com.pathplanner.lib.path.PathPlannerPath;
 import com.pathplanner.lib.util.FlippingUtil;
+
 import edu.wpi.first.math.Pair;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
-import edu.wpi.first.wpilibj2.command.*;
+import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import edu.wpi.first.wpilibj2.command.ConditionalCommand;
+import edu.wpi.first.wpilibj2.command.InstantCommand;
+import edu.wpi.first.wpilibj2.command.WaitUntilCommand;
 import frc.robot.RobotStates;
 import frc.robot.autos.routines.AutoEventLooper;
 import frc.robot.autos.routines.AutoTrigger;
@@ -186,7 +190,7 @@ public final class AutoManager {
                     nextScoringLocation ->
                             triggersToBind.add(autoEventLooper.addTrigger(
                                     currentScoringOrAlgaeLocation + "," + nextScoringOrAlgaeLocation,
-                                    () -> Commands.waitSeconds(0.5)
+                                    () -> Commands.wait(0.5)
                                             .andThen(groundIntake
                                                     ? getPathFindingCommandToGroundIntakeCoral(robotStates, currentScoringOrAlgaePose, RobotPoses.Reef.getRobotPoseAtBranch(
                                                             robotStates.swerve.localizer.currentRobotScoringSetting,
@@ -203,7 +207,7 @@ public final class AutoManager {
                             nextAlgaeLocation ->
                                     triggersToBind.add(autoEventLooper.addTrigger(
                                             currentScoringOrAlgaeLocation + "," + nextScoringOrAlgaeLocation,
-                                            () -> Commands.waitSeconds(FieldUtil.Reef.Side.algaeIsHigh(nextAlgaeLocation) ? 0.5 : 1.0)
+                                            () -> Commands.wait(FieldUtil.Reef.Side.algaeIsHigh(nextAlgaeLocation) ? 0.5 : 1.0)
                                                     .andThen(robotStates.swerve.pathFindToAlgaeOnReef(robotStates, nextAlgaeLocation))
                                                     .andThen(robotStates.swerve.pathFindToNet(robotStates, false))
                                     ))
