@@ -195,7 +195,7 @@ public class Swerve extends SwerveDrivetrain<TalonFX, TalonFX, CANcoder> impleme
 
     public Command pushAlliancePartnerOut() {
         return applyRequest(() -> robotCentric.withVelocityX(-1.0))
-                .withDeadline(Commands.waitSeconds(0.5))
+                .withDeadline(Commands.wait(0.5))
                 .andThen(this::forceStop);
     }
 

@@ -8,13 +8,18 @@ import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
-import edu.wpi.first.networktables.*;
+import edu.wpi.first.networktables.BooleanPublisher;
+import edu.wpi.first.networktables.DoubleArrayPublisher;
+import edu.wpi.first.networktables.DoublePublisher;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.StringPublisher;
+import edu.wpi.first.networktables.StructArrayPublisher;
+import edu.wpi.first.networktables.StructPublisher;
 import edu.wpi.first.wpilibj.smartdashboard.Mechanism2d;
 import edu.wpi.first.wpilibj.smartdashboard.MechanismLigament2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.util.Color;
 import edu.wpi.first.wpilibj.util.Color8Bit;
-import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.constants.Constants;
 
 public class SwerveTelemetry {
@@ -98,9 +103,9 @@ public class SwerveTelemetry {
         poseArray[2] = state.Pose.getRotation().getDegrees();
         for (int i = 0; i < 4; ++i) {
             moduleStatesArray[i * 2] = state.ModuleStates[i].angle.getRadians();
-            moduleStatesArray[i * 2 + 1] = state.ModuleStates[i].speedMetersPerSecond;
+            moduleStatesArray[i * 2 + 1] = state.ModuleStates[i].speed;
             moduleTargetsArray[i * 2] = state.ModuleTargets[i].angle.getRadians();
-            moduleTargetsArray[i * 2 + 1] = state.ModuleTargets[i].speedMetersPerSecond;
+            moduleTargetsArray[i * 2 + 1] = state.ModuleTargets[i].speed;
             currents[i] = swerve.getModule(i).getDriveMotor().getStatorCurrent().getValueAsDouble();
             positions[i] = swerve.getModule(i).getEncoder().getPosition().getValueAsDouble();
         }
@@ -118,7 +123,7 @@ public class SwerveTelemetry {
         for (int i = 0; i < 4; ++i) {
             moduleSpeeds[i].setAngle(state.ModuleStates[i].angle);
             moduleDirections[i].setAngle(state.ModuleStates[i].angle);
-            moduleSpeeds[i].setLength(state.ModuleStates[i].speedMetersPerSecond / (2 * Constants.MAX_VEL));
+            moduleSpeeds[i].setLength(state.ModuleStates[i].speed / (2 * Constants.MAX_VEL));
 
             SmartDashboard.putData("Module " + i, moduleMechanisms[i]);
         }
