@@ -44,7 +44,7 @@ public final class CompConstants {
 
     public final static class ElevatorConstants {
         // motor config
-        public static final int LOWER_LIMIT_SWITCH_DIO_PORT = 7;
+        public static final int LOWER_LIMIT_SWITCH_DIO_PORT = 0;
         public static final InvertedValue MOTOR_INVERT = InvertedValue.Clockwise_Positive;
 
         // mechanism characterization

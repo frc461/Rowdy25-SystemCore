@@ -21,12 +21,13 @@ public enum RobotIdentity {
 
     private static RobotIdentity getIdentity() {
         String mac = MacAddress.getMACAddress();
-        for (RobotIdentity identity : RobotIdentity.values()) {
-            if (identity.mac.equals(mac)) {
-                return identity;
-            }
-        }
-        return SIM;
+        return ROWDY;
+        // for (RobotIdentity identity : RobotIdentity.values()) {
+        //     if (identity.mac.equals(mac)) {
+        //         return identity;
+        //     }
+        // }
+        // return SIM;
     }
 
     public static void initializeConstants() {
