@@ -51,7 +51,7 @@ public final class CompConstants {
         private static final double ROTOR_TO_PULLEY_RATIO = 50.0 / 12.0 * 43.0 / 25.0;
         private static final double PULLEY_CIRCUMFERENCE = 7.06858347058;
         public static final double ROTOR_TO_INCH_RATIO = ROTOR_TO_PULLEY_RATIO / PULLEY_CIRCUMFERENCE;
-        private static final double STAGE_2_LOAD_LBS = 28.44;
+        // private static final double STAGE_2_LOAD_LBS = 28.44;
         public static final double MASS_LBS = 23.0132625 / ((102.2329023 - 54.8422757) / (114.375 - 54.8422757));
         public static final double COM_TO_STAGE_2_RATIO = 0.509767;
         public static final double STAGE_3_LIMIT = 22;

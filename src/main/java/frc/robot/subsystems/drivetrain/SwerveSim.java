@@ -16,6 +16,7 @@ public class SwerveSim {
         this.swerve = swerve;
     }
 
+    @SuppressWarnings("resource")
     public void startSimThread() {
         lastSimTime = Utils.getCurrentTimeSeconds();
 

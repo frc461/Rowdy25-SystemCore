@@ -2,9 +2,9 @@ package frc.robot.util;
 
 import edu.wpi.first.math.trajectory.TrapezoidProfile;
 
-import java.util.function.DoubleSupplier;
+// import java.util.function.DoubleSupplier;
 import java.util.function.Function;
-import java.util.function.Supplier;
+// import java.util.function.Supplier;
 
 public class ProfiledExpEndController {
     private double lastTimestamp;
