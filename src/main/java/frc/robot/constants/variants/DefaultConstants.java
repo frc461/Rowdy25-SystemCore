@@ -26,7 +26,6 @@ import com.ctre.phoenix6.swerve.SwerveModuleConstantsFactory;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.path.PathConstraints;
 import com.revrobotics.servohub.ServoChannel;
-import com.revrobotics.servohub.ServoHub;
 
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
@@ -117,8 +116,8 @@ public final class DefaultConstants {
     public static final int ONE_MILLION = 1_000_000;
     public static final double DEADBAND = 0.1;
 
-    public static final int SERVO_HUB_ID = 54;
-    public static final ServoHub SERVO_HUB = new ServoHub(0, SERVO_HUB_ID);
+//     public static final int SERVO_HUB_ID = 54;
+//     public static final ServoHub SERVO_HUB = new ServoHub(0, SERVO_HUB_ID);
 
     public static final class AutoConstants {
         public static final RobotConfig ROBOT_CONFIG;

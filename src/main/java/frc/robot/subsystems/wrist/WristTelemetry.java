@@ -32,7 +32,7 @@ public class WristTelemetry {
         wristNearTargetPub.set(wrist.nearTarget());
         wristCurrentPub.set(wrist.getCurrent());
 
-        logValues();
+        // logValues();
     }
 
     private void logValues() {
