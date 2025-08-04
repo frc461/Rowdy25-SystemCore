@@ -1,6 +1,6 @@
 package frc.robot.subsystems.wrist;
 
-import dev.doglog.DogLog;
+// import dev.doglog.DogLog;
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTable;
@@ -35,12 +35,12 @@ public class WristTelemetry {
         // logValues();
     }
 
-    private void logValues() {
-        DogLog.log("WristPosition", wrist.getPosition());
-        DogLog.log("WristTarget", wrist.getTarget());
-        DogLog.log("WristError", wrist.getError());
-        DogLog.log("WristState", wrist.getState().toString());
-        DogLog.log("WristIsAtTarget", wrist.isAtTarget());
-        DogLog.log("WristNearTarget", wrist.nearTarget());
-    }
+    // private void logValues() {
+    //     DogLog.log("WristPosition", wrist.getPosition());
+    //     DogLog.log("WristTarget", wrist.getTarget());
+    //     DogLog.log("WristError", wrist.getError());
+    //     DogLog.log("WristState", wrist.getState().toString());
+    //     DogLog.log("WristIsAtTarget", wrist.isAtTarget());
+    //     DogLog.log("WristNearTarget", wrist.nearTarget());
+    // }
 }

@@ -1,6 +1,5 @@
 package frc.robot.subsystems.elevator;
 
-import dev.doglog.DogLog;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
@@ -37,15 +36,15 @@ public class ElevatorTelemetry {
         elevatorCurrentPub.set(elevator.getCurrent());
         elevatorRotorVelocityPub.set(elevator.getRotorVelocity());
 
-        logValues();
+        // logValues();
     }
 
-    private void logValues() {
-        DogLog.log("ElevatorPosition", elevator.getPosition());
-        DogLog.log("ElevatorTarget", elevator.getTarget());
-        DogLog.log("ElevatorState", elevator.getState());
-        DogLog.log("ElevatorIsAtTarget", elevator.isAtTarget());
-        DogLog.log("ElevatorNearTarget", elevator.nearTarget());
-        DogLog.log("ElevatorSwitchTriggered", elevator.lowerSwitchTriggered());
-    }
+    // private void logValues() {
+    //     DogLog.log("ElevatorPosition", elevator.getPosition());
+    //     DogLog.log("ElevatorTarget", elevator.getTarget());
+    //     DogLog.log("ElevatorState", elevator.getState());
+    //     DogLog.log("ElevatorIsAtTarget", elevator.isAtTarget());
+    //     DogLog.log("ElevatorNearTarget", elevator.nearTarget());
+    //     DogLog.log("ElevatorSwitchTriggered", elevator.lowerSwitchTriggered());
+    // }
 }

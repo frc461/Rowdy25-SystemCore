@@ -1,7 +1,11 @@
 package frc.robot.subsystems.intake;
 
-import dev.doglog.DogLog;
-import edu.wpi.first.networktables.*;
+import edu.wpi.first.networktables.BooleanPublisher;
+import edu.wpi.first.networktables.DoubleArrayPublisher;
+import edu.wpi.first.networktables.DoubleEntry;
+import edu.wpi.first.networktables.DoublePublisher;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.StringPublisher;
 import frc.robot.constants.Constants;
 
 public class IntakeTelemetry {
@@ -36,16 +40,16 @@ public class IntakeTelemetry {
         stallIntakePub.set(intake.stallIntent.name());
         intakeCurrentPub.set(intake.getCurrent());
 
-        logValues();
+        // logValues();
     }
 
-    private void logValues() {
-        DogLog.log("IntakeRGBReading", intake.getColorReading());
-        DogLog.log("IntakeHasCoral", intake.hasCoral());
-        DogLog.log("IntakeBeamBreakBroken", intake.beamBreakBroken());
-        DogLog.log("IntakeHasAlgae", intake.hasAlgae());
-        DogLog.log("IntakeState", intake.getState());
-        DogLog.log("IntakeStalling", intake.hasAlgaeOrCoralStuck.getAsBoolean());
-        DogLog.log("IntakeCanandcolorProximity", intake.getProximity());
-    }
+    // private void logValues() {
+    //     DogLog.log("IntakeRGBReading", intake.getColorReading());
+    //     DogLog.log("IntakeHasCoral", intake.hasCoral());
+    //     DogLog.log("IntakeBeamBreakBroken", intake.beamBreakBroken());
+    //     DogLog.log("IntakeHasAlgae", intake.hasAlgae());
+    //     DogLog.log("IntakeState", intake.getState());
+    //     DogLog.log("IntakeStalling", intake.hasAlgaeOrCoralStuck.getAsBoolean());
+    //     DogLog.log("IntakeCanandcolorProximity", intake.getProximity());
+    // }
 }
