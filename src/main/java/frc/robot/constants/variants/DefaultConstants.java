@@ -118,7 +118,7 @@ public final class DefaultConstants {
     public static final double DEADBAND = 0.1;
 
     public static final int SERVO_HUB_ID = 54;
-    public static final ServoHub SERVO_HUB = new ServoHub(0, SERVO_HUB_ID);
+    public static final ServoHub SERVO_HUB = new ServoHub(1, SERVO_HUB_ID);
 
     public static final class AutoConstants {
         public static final RobotConfig ROBOT_CONFIG;

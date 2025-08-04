@@ -51,7 +51,7 @@ public class Intake extends SubsystemBase {
     public DoubleConsumer setProximityObjectDetectionThreshold = threshold -> proximityObjectDetectionThreshold = threshold;
 
     public Intake() {
-        intake = new TalonFX(Constants.IntakeConstants.MOTOR_ID);
+        intake = new TalonFX(Constants.IntakeConstants.MOTOR_ID, "can_s1");
 
         intake.getConfigurator().apply(new TalonFXConfiguration()
                 .withMotorOutput(new MotorOutputConfigs()

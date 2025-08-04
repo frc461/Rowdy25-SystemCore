@@ -53,13 +53,13 @@ public class Wrist extends SubsystemBase {
     public Wrist() {
         currentState = State.STOW;
 
-        CANcoder encoder = new CANcoder(Constants.WristConstants.ENCODER_ID);
+        CANcoder encoder = new CANcoder(Constants.WristConstants.ENCODER_ID, "can_s1");
         encoder.getConfigurator().apply(new CANcoderConfiguration()
                 .withMagnetSensor(new MagnetSensorConfigs()
                         .withSensorDirection(Constants.WristConstants.ENCODER_INVERT)
                         .withMagnetOffset(Constants.WristConstants.ENCODER_ABSOLUTE_OFFSET)));
 
-        wrist = new TalonFX(Constants.WristConstants.MOTOR_ID);
+        wrist = new TalonFX(Constants.WristConstants.MOTOR_ID, "can_s1");
         wrist.getConfigurator().apply(new TalonFXConfiguration()
                 .withFeedback(new FeedbackConfigs().withRemoteCANcoder(encoder)
                         .withSensorToMechanismRatio(Constants.WristConstants.SENSOR_TO_DEGREE_RATIO))

@@ -54,7 +54,7 @@ public class Elevator extends SubsystemBase {
     public Elevator() {
         currentState = State.STOW;
 
-        elevator = new TalonFX(Constants.ElevatorConstants.LEAD_ID);
+        elevator = new TalonFX(Constants.ElevatorConstants.LEAD_ID, "can_s1");
         elevator.getConfigurator().apply(new TalonFXConfiguration()
                 .withFeedback(new FeedbackConfigs()
                         .withSensorToMechanismRatio(Constants.ElevatorConstants.ROTOR_TO_INCH_RATIO))
@@ -77,7 +77,7 @@ public class Elevator extends SubsystemBase {
                         .withMotionMagicExpo_kV(Constants.ElevatorConstants.EXPO_V)
                         .withMotionMagicExpo_kA(Constants.ElevatorConstants.EXPO_A)));
 
-        try (TalonFX elevator2 = new TalonFX(Constants.ElevatorConstants.FOLLOWER_ID)) {
+        try (TalonFX elevator2 = new TalonFX(Constants.ElevatorConstants.FOLLOWER_ID, "can_s1")) {
             elevator2.setControl(new Follower(Constants.ElevatorConstants.LEAD_ID, true));
         }
 

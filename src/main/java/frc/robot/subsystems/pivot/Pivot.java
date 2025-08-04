@@ -1,5 +1,6 @@
 package frc.robot.subsystems.pivot;
 
+import com.ctre.phoenix6.CANBus;
 import com.ctre.phoenix6.configs.*;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
@@ -103,13 +104,13 @@ public class Pivot extends SubsystemBase {
         currentState = State.STOW;
         currentMotionMagicProfile = MotionMagicProfile.NORMAL;
 
-        CANcoder encoder = new CANcoder(Constants.PivotConstants.ENCODER_ID);
+        CANcoder encoder = new CANcoder(Constants.PivotConstants.ENCODER_ID, "can_s1");
         encoder.getConfigurator().apply(new CANcoderConfiguration()
                 .withMagnetSensor(new MagnetSensorConfigs()
                         .withSensorDirection(Constants.PivotConstants.ENCODER_INVERT)
                         .withMagnetOffset(Constants.PivotConstants.ENCODER_ABSOLUTE_OFFSET)));
 
-        pivot = new TalonFX(Constants.PivotConstants.LEAD_ID);
+        pivot = new TalonFX(Constants.PivotConstants.LEAD_ID, "can_s1");
         pivot.getConfigurator().apply(new TalonFXConfiguration()
                 .withFeedback(new FeedbackConfigs().withRemoteCANcoder(encoder)
                         .withSensorToMechanismRatio(Constants.PivotConstants.SENSOR_TO_DEGREE_RATIO))
@@ -129,11 +130,11 @@ public class Pivot extends SubsystemBase {
                         .withKD(Constants.PivotConstants.D))
                 .withMotionMagic(currentMotionMagicProfile.config));
 
-        try (TalonFX pivot2 = new TalonFX(Constants.PivotConstants.FOLLOWER_ID)) {
+        try (TalonFX pivot2 = new TalonFX(Constants.PivotConstants.FOLLOWER_ID, "can_s1")) {
             pivot2.setControl(new Follower(Constants.PivotConstants.LEAD_ID, true));
         }
 
-        intake = new TalonFX(Constants.PivotConstants.INTAKE_ID);
+        intake = new TalonFX(Constants.PivotConstants.INTAKE_ID, "can_s1");
         intake.getConfigurator().apply(new TalonFXConfiguration()
                 .withFeedback(new FeedbackConfigs())
                 .withMotorOutput(new MotorOutputConfigs()
