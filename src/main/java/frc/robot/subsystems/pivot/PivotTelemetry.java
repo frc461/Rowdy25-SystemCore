@@ -1,6 +1,6 @@
 package frc.robot.subsystems.pivot;
 
-import dev.doglog.DogLog;
+// import dev.doglog.DogLog;
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTable;
@@ -42,20 +42,20 @@ public class PivotTelemetry {
         pivotNearTargetPub.set(pivot.nearTarget());
         pivotCurrent.set(pivot.getCurrent());
 
-        logValues();
+        // logValues();
     }
 
-    private void logValues() {
-        DogLog.log("PivotPose", pivot.getPosition());
-        DogLog.log("PivotTarget", pivot.getTarget());
-        DogLog.log("PivotError", pivot.getError());
-        DogLog.log("PivotState", pivot.getState().name());
-        DogLog.log("PivotGravityGains", pivot.getCurrentGravityGains());
-        DogLog.log("PivotUpRatchetPosition", pivot.getUpRatchetStateValue());
-        DogLog.log("PivotRatchetedState", pivot.getUpRatchetState());
-        DogLog.log("PivotDownRatchetPosition", pivot.getDownRatchetStateValue());
-        DogLog.log("PivotDownRatchetedState", pivot.getDownRatchetState());
-        DogLog.log("PivotIsAtTarget", pivot.isAtTarget());
-        DogLog.log("PivotNearTarget", pivot.nearTarget());
-    }
+    // private void logValues() {
+    //     DogLog.log("PivotPose", pivot.getPosition());
+    //     DogLog.log("PivotTarget", pivot.getTarget());
+    //     DogLog.log("PivotError", pivot.getError());
+    //     DogLog.log("PivotState", pivot.getState().name());
+    //     DogLog.log("PivotGravityGains", pivot.getCurrentGravityGains());
+    //     DogLog.log("PivotUpRatchetPosition", pivot.getUpRatchetStateValue());
+    //     DogLog.log("PivotRatchetedState", pivot.getUpRatchetState());
+    //     DogLog.log("PivotDownRatchetPosition", pivot.getDownRatchetStateValue());
+    //     DogLog.log("PivotDownRatchetedState", pivot.getDownRatchetState());
+    //     DogLog.log("PivotIsAtTarget", pivot.isAtTarget());
+    //     DogLog.log("PivotNearTarget", pivot.nearTarget());
+    // }
 }

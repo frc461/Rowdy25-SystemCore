@@ -1,6 +1,6 @@
 package frc.robot.subsystems.intake;
 
-import dev.doglog.DogLog;
+// import dev.doglog.DogLog;
 import edu.wpi.first.networktables.*;
 import frc.robot.constants.Constants;
 
@@ -24,28 +24,28 @@ public class IntakeTelemetry {
     private final DoublePublisher intakeCurrentPub = intakeTelemetryTable.getDoubleTopic("Intake Current").publish();
 
     public void publishValues() {
-        rgbPub.set(intake.getColorReading());
+      //  rgbPub.set(intake.getColorReading());
         hasCoralPub.set(intake.hasCoral());
         beamBreakBrokenPub.set(intake.beamBreakBroken());
         hasAlgaePub.set(intake.hasAlgae());
         currentStatePub.set(intake.getState().toString());
-        proximityPub.set(intake.getProximity());
+     //   proximityPub.set(intake.getProximity());
         proximityObjectDetectionThresholdEntry.set(proximityObjectDetectionThresholdEntry.get()); // TODO SHOP: TEST ENTRY
         intake.setProximityObjectDetectionThreshold.accept(proximityObjectDetectionThresholdEntry.get());
         intakeStallingPub.set(intake.hasAlgaeOrCoralStuck.getAsBoolean());
         stallIntakePub.set(intake.stallIntent.name());
         intakeCurrentPub.set(intake.getCurrent());
 
-        logValues();
+        // logValues();
     }
 
-    private void logValues() {
-        DogLog.log("IntakeRGBReading", intake.getColorReading());
-        DogLog.log("IntakeHasCoral", intake.hasCoral());
-        DogLog.log("IntakeBeamBreakBroken", intake.beamBreakBroken());
-        DogLog.log("IntakeHasAlgae", intake.hasAlgae());
-        DogLog.log("IntakeState", intake.getState());
-        DogLog.log("IntakeStalling", intake.hasAlgaeOrCoralStuck.getAsBoolean());
-        DogLog.log("IntakeCanandcolorProximity", intake.getProximity());
-    }
+    // private void logValues() {
+    //  //   DogLog.log("IntakeRGBReading", intake.getColorReading());
+    //     DogLog.log("IntakeHasCoral", intake.hasCoral());
+    //     DogLog.log("IntakeBeamBreakBroken", intake.beamBreakBroken());
+    //     DogLog.log("IntakeHasAlgae", intake.hasAlgae());
+    //     DogLog.log("IntakeState", intake.getState());
+    //     DogLog.log("IntakeStalling", intake.hasAlgaeOrCoralStuck.getAsBoolean());
+    //   //  DogLog.log("IntakeCanandcolorProximity", intake.getProximity());
+    // }
 }

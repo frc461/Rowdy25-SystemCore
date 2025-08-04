@@ -1,6 +1,6 @@
 package frc.robot.subsystems.localizer;
 
-import dev.doglog.DogLog;
+// import dev.doglog.DogLog;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.networktables.*;
 import frc.robot.RobotStates;
@@ -113,26 +113,26 @@ public class LocalizationTelemetry {
         );
         nearestRobotPoseAtCoralStation.set(localizer.nearestRobotPoseAtCoralStation);
 
-        logValues();
+        // logValues();
     }
 
-    private void logValues() {
-        DogLog.log("PoseEstimate", localizer.getEstimatedPose());
-        DogLog.log("LocalizationStrategy", localizer.getLocalizationStrategy());
-        PhotonUtil.BW.getBestTagPose(PhotonUtil.BW.BWCamera.TOP_RIGHT).ifPresent(
-                poseEstimate -> DogLog.log("PhotonTopRightPose", poseEstimate.estimatedPose().toPose2d())
-        );
-        PhotonUtil.BW.getBestTagPose(PhotonUtil.BW.BWCamera.TOP_LEFT).ifPresent(
-                poseEstimate -> DogLog.log("PhotonTopLeftPose", poseEstimate.estimatedPose().toPose2d())
-        );
-        PhotonUtil.BW.getBestTagPose(PhotonUtil.BW.BWCamera.BACK).ifPresent(
-                poseEstimate -> DogLog.log("PhotonBackPose", poseEstimate.estimatedPose().toPose2d())
-        );
-        DogLog.log("PhotonColorHasTarget", PhotonUtil.Color.hasTargets());
-        DogLog.log("PhotonBWTopRightHasTarget", PhotonUtil.BW.hasTargets(PhotonUtil.BW.BWCamera.TOP_RIGHT));
-        DogLog.log("PhotonBWTopLeftHasTarget", PhotonUtil.BW.hasTargets(PhotonUtil.BW.BWCamera.TOP_LEFT));
-        DogLog.log("PhotonBWBackHasTarget", PhotonUtil.BW.hasTargets(PhotonUtil.BW.BWCamera.BACK));
-    }
+    // private void logValues() {
+    //     DogLog.log("PoseEstimate", localizer.getEstimatedPose());
+    //     DogLog.log("LocalizationStrategy", localizer.getLocalizationStrategy());
+    //     PhotonUtil.BW.getBestTagPose(PhotonUtil.BW.BWCamera.TOP_RIGHT).ifPresent(
+    //             poseEstimate -> DogLog.log("PhotonTopRightPose", poseEstimate.estimatedPose().toPose2d())
+    //     );
+    //     PhotonUtil.BW.getBestTagPose(PhotonUtil.BW.BWCamera.TOP_LEFT).ifPresent(
+    //             poseEstimate -> DogLog.log("PhotonTopLeftPose", poseEstimate.estimatedPose().toPose2d())
+    //     );
+    //     PhotonUtil.BW.getBestTagPose(PhotonUtil.BW.BWCamera.BACK).ifPresent(
+    //             poseEstimate -> DogLog.log("PhotonBackPose", poseEstimate.estimatedPose().toPose2d())
+    //     );
+    //     DogLog.log("PhotonColorHasTarget", PhotonUtil.Color.hasTargets());
+    //     DogLog.log("PhotonBWTopRightHasTarget", PhotonUtil.BW.hasTargets(PhotonUtil.BW.BWCamera.TOP_RIGHT));
+    //     DogLog.log("PhotonBWTopLeftHasTarget", PhotonUtil.BW.hasTargets(PhotonUtil.BW.BWCamera.TOP_LEFT));
+    //     DogLog.log("PhotonBWBackHasTarget", PhotonUtil.BW.hasTargets(PhotonUtil.BW.BWCamera.BACK));
+    // }
 
     public void publishPose(StructPublisher<Pose2d> structPub, DoubleArrayPublisher arrayPub, StringPublisher prettyPub, Pose2d pose) {
         structPub.set(pose);

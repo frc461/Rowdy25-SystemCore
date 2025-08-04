@@ -3,7 +3,7 @@ package frc.robot.subsystems.drivetrain;
 import com.ctre.phoenix6.SignalLogger;
 import com.ctre.phoenix6.swerve.SwerveDrivetrain.SwerveDriveState;
 
-import dev.doglog.DogLog;
+// import dev.doglog.DogLog;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
@@ -128,15 +128,15 @@ public class SwerveTelemetry {
             SmartDashboard.putData("Module " + i, moduleMechanisms[i]);
         }
 
-        logValues(state);
+        // logValues(state);
     }
 
-    private void logValues(SwerveDriveState state) {
-        DogLog.log("OdometryPose", state.Pose);
-        DogLog.log("ChassisSpeeds", state.Speeds);
-        DogLog.log("ModuleStates", state.ModuleStates);
-        DogLog.log("ModuleTargets", state.ModuleTargets);
-        DogLog.log("ModulePositions", state.ModulePositions);
-        DogLog.log("OdometryPeriod", state.OdometryPeriod);
-    }
+    // private void logValues(SwerveDriveState state) {
+    //     DogLog.log("OdometryPose", state.Pose);
+    //     DogLog.log("ChassisSpeeds", state.Speeds);
+    //     DogLog.log("ModuleStates", state.ModuleStates);
+    //     DogLog.log("ModuleTargets", state.ModuleTargets);
+    //     DogLog.log("ModulePositions", state.ModulePositions);
+    //     DogLog.log("OdometryPeriod", state.OdometryPeriod);
+    // }
 }

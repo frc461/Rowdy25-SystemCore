@@ -8,8 +8,8 @@ import com.pathplanner.lib.commands.PathfindingCommand;
 import com.pathplanner.lib.pathfinding.LocalADStar;
 import com.pathplanner.lib.pathfinding.Pathfinding;
 
-import dev.doglog.DogLog;
-import dev.doglog.DogLogOptions;
+// import dev.doglog.DogLog;
+// import dev.doglog.DogLogOptions;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
@@ -41,8 +41,8 @@ public class RobotContainer {
         configurePathPlannerNamedCommands();
         configureButtonBindings();
 
-        DogLog.setOptions(new DogLogOptions(() -> false, false, true, true, false, 5000, () -> false));
-        DogLog.setPdh(new PowerDistribution(0, 0, PowerDistribution.ModuleType.kRev));
+        // DogLog.setOptions(new DogLogOptions(() -> false, false, true, true, false, 5000, () -> false));
+        // DogLog.setPdh(new PowerDistribution(0, 0, PowerDistribution.ModuleType.kRev));
         
         Pathfinding.setPathfinder(new LocalADStar());
         PathfindingCommand.warmupCommand().schedule();

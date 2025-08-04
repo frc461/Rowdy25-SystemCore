@@ -3,10 +3,10 @@ package frc.robot.subsystems.intake;
 import com.ctre.phoenix6.configs.*;
 import com.ctre.phoenix6.hardware.TalonFX;
 
-import com.reduxrobotics.canand.CanandEventLoop;
-import com.reduxrobotics.sensors.canandcolor.Canandcolor;
-import com.reduxrobotics.sensors.canandcolor.ColorPeriod;
-import com.reduxrobotics.sensors.canandcolor.ProximityPeriod;
+// import com.reduxrobotics.canand.CanandEventLoop;
+// import com.reduxrobotics.sensors.canandcolor.Canandcolor;
+// import com.reduxrobotics.sensors.canandcolor.ColorPeriod;
+// import com.reduxrobotics.sensors.canandcolor.ProximityPeriod;
 import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -39,7 +39,7 @@ public class Intake extends SubsystemBase {
     private State currentState;
 
     private final TalonFX intake;
-    private final Canandcolor canandcolor;
+    // private final Canandcolor canandcolor;
     private final DigitalInput beamBreak;
 
     private final IntakeTelemetry intakeTelemetry = new IntakeTelemetry(this);
@@ -63,19 +63,19 @@ public class Intake extends SubsystemBase {
                         .withBeepOnBoot(false)
                         .withAllowMusicDurDisable(true)));
 
-        CanandEventLoop.getInstance();
-        canandcolor = new Canandcolor(Constants.IntakeConstants.SENSOR_ID);
-        canandcolor.setSettings(
-                canandcolor.getSettings()
-                        .setAlignProximityFramesToIntegrationPeriod(true)
-                        .setProximityIntegrationPeriod(ProximityPeriod.k5ms)
-                        .setAlignColorFramesToIntegrationPeriod(true)
-                        .setColorIntegrationPeriod(ColorPeriod.k25ms)
-                        .setDigoutFramePeriod(0.02)
-        );
-        canandcolor.setLampLEDBrightness(0.0);
-        beamBreak = new DigitalInput(Constants.IntakeConstants.BEAMBREAK_DIO_PORT);
-        currentState = State.IDLE;
+        // CanandEventLoop.getInstance();
+        // canandcolor = new Canandcolor(Constants.IntakeConstants.SENSOR_ID);
+        // canandcolor.setSettings(
+        //         canandcolor.getSettings()
+        //                 .setAlignProximityFramesToIntegrationPeriod(true)
+        //                 .setProximityIntegrationPeriod(ProximityPeriod.k5ms)
+        //                 .setAlignColorFramesToIntegrationPeriod(true)
+        //                 .setColorIntegrationPeriod(ColorPeriod.k25ms)
+        //                 .setDigoutFramePeriod(0.02)
+        // );
+        // canandcolor.setLampLEDBrightness(0.0);
+         beamBreak = new DigitalInput(Constants.IntakeConstants.BEAMBREAK_DIO_PORT);
+         currentState = State.IDLE;
 
         hasAlgaeOrCoralStuck = new Trigger(() -> Math.abs(getCurrent()) > 40.0).debounce(0.1, Debouncer.DebounceType.kRising);
     }
@@ -88,28 +88,28 @@ public class Intake extends SubsystemBase {
         return currentState;
     }
 
-    public double[] getColorReading() {
-        return new double[] { canandcolor.getBlue(), canandcolor.getGreen(), canandcolor.getRed() };
-    }
+    // public double[] getColorReading() {
+    //     return new double[] { canandcolor.getBlue(), canandcolor.getGreen(), canandcolor.getRed() };
+    // }
 
-    public double getProximity() {
-        return canandcolor.getProximity();
-    }
+    // public double getProximity() {
+    //     return canandcolor.getProximity();
+    // }
 
     public boolean beamBreakBroken() {
         return !beamBreak.get();
     }
 
-    public boolean coralEntered() {
-        return getProximity() < proximityObjectDetectionThreshold;
-    }
+    // public boolean coralEntered() {
+    //     return getProximity() < proximityObjectDetectionThreshold;
+    // }
 
     public boolean barelyHasCoral() {
-        return beamBreakBroken() || coralEntered();
+        return beamBreakBroken() ;//|| coralEntered();
     }
 
     public boolean hasCoral() {
-        return beamBreakBroken() && coralEntered();
+        return beamBreakBroken() ;//&& coralEntered();
     }
 
     public boolean coralStuck() {
