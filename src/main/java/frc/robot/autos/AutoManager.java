@@ -200,7 +200,7 @@ public final class AutoManager {
                                                             nextScoringLocation.getFirst()
                                                     ))
                                             )
-                                             .andThen(new WaitUntilCommand(() -> robotStates.stowState.getAsBoolean() )) //|| robotStates.intake.coralEntered()))
+                                             .andThen(new WaitUntilCommand(() -> robotStates.stowState.getAsBoolean() || robotStates.intake.coralEntered()))
                                             .andThen(robotStates.swerve.pathFindToScoringLocation(robotStates, nextScoringLocation.getFirst(), nextScoringLocation.getSecond()))
                             )),
                     () -> getAlgaeLocation(nextScoringOrAlgaeLocation).ifPresent(

@@ -17,10 +17,10 @@ public class IntakeCommand extends Command {
             case INTAKE:
                 if (intake.hasCoral() || intake.algaeStuck()) {
                     intake.setIdleState();
-                // } else if (intake.coralEntered() && !intake.beamBreakBroken()) {
-                //     intake.setIntakeSlowState();
-                // } else if (intake.beamBreakBroken() && !intake.coralEntered()) {
-                //     intake.setOuttakeSlowState();
+                } else if (intake.coralEntered() && !intake.beamBreakBroken()) {
+                    intake.setIntakeSlowState();
+                } else if (intake.beamBreakBroken() && !intake.coralEntered()) {
+                    intake.setOuttakeSlowState();
                 } else {
                     intake.setIntakeSpeed(0.45);
                 }
@@ -28,10 +28,10 @@ public class IntakeCommand extends Command {
             case INTAKE_SLOW:
                 if (intake.hasCoral() || intake.algaeStuck()) {
                     intake.setIdleState();
-                // } else if (intake.coralEntered() && !intake.beamBreakBroken()) {
-                //     intake.setIntakeSpeed(0.15);
-                // } else if (intake.beamBreakBroken() && !intake.coralEntered()) {
-                //     intake.setOuttakeSlowState();
+                } else if (intake.coralEntered() && !intake.beamBreakBroken()) {
+                    intake.setIntakeSpeed(0.15);
+                } else if (intake.beamBreakBroken() && !intake.coralEntered()) {
+                    intake.setOuttakeSlowState();
                 } else {
                     intake.setIntakeState(false);
                 }
@@ -48,10 +48,10 @@ public class IntakeCommand extends Command {
             case OUTTAKE_SLOW:
                 if (intake.hasCoral() || intake.algaeStuck()) {
                     intake.setIdleState();
-                // } else if (intake.coralEntered() && !intake.beamBreakBroken()) {
-                //     intake.setIntakeSlowState();
-                // } else if (intake.beamBreakBroken() && !intake.coralEntered()) {
-                //     intake.setIntakeSpeed(-0.15);
+                } else if (intake.coralEntered() && !intake.beamBreakBroken()) {
+                    intake.setIntakeSlowState();
+                } else if (intake.beamBreakBroken() && !intake.coralEntered()) {
+                    intake.setIntakeSpeed(-0.15);
                 } else {
                     intake.setIntakeState(false);
                 }
