@@ -65,7 +65,7 @@ public class Intake extends SubsystemBase {
                         .withAllowMusicDurDisable(true)));
 
         CanandEventLoop.getInstance();
-        canandcolor = new Canandcolor(Constants.IntakeConstants.SENSOR_ID);
+        canandcolor = new Canandcolor(Constants.IntakeConstants.SENSOR_ID, "socketcan:can_s1");
         canandcolor.setSettings(
                 canandcolor.getSettings()
                         .setAlignProximityFramesToIntegrationPeriod(true)

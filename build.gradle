@@ -1,3 +1,7 @@
+import edu.wpi.first.deployutils.deploy.target.location.SshDeployLocation;
+import org.apache.sshd.common.keyprovider.KeyIdentityProvider
+import edu.wpi.first.deployutils.deploy.sessions.AcceptAllLoggedServerKeyVerifier;
+
 plugins {
     id "java"
     id "edu.wpi.first.GradleRIO2027" version "2027.0.0-alpha-2"
@@ -21,6 +25,18 @@ deploy {
             // want to store a team number in this file.
             team = project.frc.getTeamNumber()
             debug = project.frc.getDebugOrDefault(false)
+
+            locations.each { location ->
+                if(location instanceof SshDeployLocation) {
+                    location.setClientSessionConfiguration { session ->
+                        session.keyIdentityProvider = KeyIdentityProvider.EMPTY_KEYS_PROVIDER
+                        session.serverKeyVerifier = new AcceptAllLoggedServerKeyVerifier(logger)
+                        if (location.password != null && !location.password.isBlank()) {
+                            session.addPasswordIdentity(location.password);
+                        }
+                    }
+                }
+            }
 
             artifacts {
                 // First part is artifact name, 2nd is artifact type

@@ -574,6 +574,6 @@ public class Swerve extends SwerveDrivetrain<TalonFX, TalonFX, CANcoder> impleme
         }
 
         swerveTelemetry.publishValues();
-        // localizer.periodic();
+        localizer.periodic();
     }
 }
