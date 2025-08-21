@@ -87,7 +87,7 @@ public class Localizer {
     }
 
     public Pose2d getStrategyPose() {
-        return strategy == LocalizationStrategy.QUEST_NAV ? getQuestPose() : getEstimatedPose();
+        return getEstimatedPose();
     }
 
     public String getLocalizationStrategy() {
@@ -220,9 +220,9 @@ public class Localizer {
 
     public void setLocalizationStrategyFromChooser() {
         LocalizationStrategy strategy = localizationChooser.getSelected();
-        if (this.strategy != strategy) {
-            this.strategy = strategy;
-        }
+        // if (this.strategy != strategy) {
+        //     this.strategy = strategy;
+        // }
     }
 
     public void toggleLocalizationStrategy() {
@@ -348,7 +348,7 @@ public class Localizer {
         poseEstimator.update(this.swerve.getState().RawHeading, this.swerve.getState().ModulePositions);
         updatePhotonPoseEstimation();
 
-        setLocalizationStrategyFromChooser();
+       // setLocalizationStrategyFromChooser();
 
         updateRobotUtilityPoses();
     }

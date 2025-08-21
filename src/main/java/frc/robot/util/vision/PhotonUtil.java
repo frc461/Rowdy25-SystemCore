@@ -14,11 +14,11 @@ import org.photonvision.targeting.PhotonTrackedTarget;
 
 import java.util.List;
 import java.util.Optional;
-// import java.util.concurrent.atomic.AtomicReference;
+import java.util.concurrent.atomic.AtomicReference;
 
 public final class PhotonUtil {
     public static void updateResults(Rotation2d heading) {
-        Color.updateResults();
+       // Color.updateResults();
         BW.updateResults(heading);
     }
 
@@ -43,7 +43,7 @@ public final class PhotonUtil {
             }
         }
 
-        private static final PhotonCamera COLOR = new PhotonCamera(Constants.NT_INSTANCE, Constants.VisionConstants.PhotonConstants.COLOR_NAME);
+         private static final PhotonCamera COLOR = new PhotonCamera(Constants.NT_INSTANCE, Constants.VisionConstants.PhotonConstants.COLOR_NAME);
 
         private static final Transform3d robotToCameraOffset = new Transform3d(
                 Constants.VisionConstants.PhotonConstants.COLOR_FORWARD,
