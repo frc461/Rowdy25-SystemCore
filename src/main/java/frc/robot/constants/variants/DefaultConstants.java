@@ -246,7 +246,7 @@ public final class DefaultConstants {
         private static final double ROTOR_TO_PULLEY_RATIO = 11.57;
         private static final double PULLEY_CIRCUMFERENCE = 7.065;
         public static final double ROTOR_TO_INCH_RATIO = ROTOR_TO_PULLEY_RATIO / PULLEY_CIRCUMFERENCE;
-        // private static final double STAGE_2_LOAD_LBS = 28.44;
+        private static final double STAGE_2_LOAD_LBS = 28.44;
         public static final double MASS_LBS = 23.0132625;
         public static final double COM_TO_STAGE_2_RATIO = 0.509767;
         public static final double STAGE_3_LIMIT = 22;
