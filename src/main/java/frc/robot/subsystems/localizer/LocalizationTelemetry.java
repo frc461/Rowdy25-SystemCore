@@ -2,7 +2,12 @@ package frc.robot.subsystems.localizer;
 
 // import dev.doglog.DogLog;
 import edu.wpi.first.math.geometry.Pose2d;
-import edu.wpi.first.networktables.*;
+import edu.wpi.first.networktables.BooleanPublisher;
+import edu.wpi.first.networktables.DoubleArrayPublisher;
+import edu.wpi.first.networktables.DoublePublisher;
+import edu.wpi.first.networktables.NetworkTable;
+import edu.wpi.first.networktables.StringPublisher;
+import edu.wpi.first.networktables.StructPublisher;
 import frc.robot.RobotStates;
 import frc.robot.constants.Constants;
 import frc.robot.util.vision.LimelightUtil;

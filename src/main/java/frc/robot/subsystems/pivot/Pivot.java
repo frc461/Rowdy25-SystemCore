@@ -1,20 +1,27 @@
 package frc.robot.subsystems.pivot;
 
-import com.ctre.phoenix6.configs.*;
+import com.ctre.phoenix6.configs.AudioConfigs;
+import com.ctre.phoenix6.configs.CANcoderConfiguration;
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.FeedbackConfigs;
+import com.ctre.phoenix6.configs.MagnetSensorConfigs;
+import com.ctre.phoenix6.configs.MotionMagicConfigs;
+import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.Slot0Configs;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
 import com.ctre.phoenix6.controls.Follower;
 import com.ctre.phoenix6.controls.MotionMagicExpoVoltage;
 import com.ctre.phoenix6.hardware.CANcoder;
 import com.ctre.phoenix6.hardware.TalonFX;
-
 import com.ctre.phoenix6.signals.NeutralModeValue;
-import com.revrobotics.servohub.ServoChannel;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.constants.Constants;
 import frc.robot.constants.RobotPoses;
+import frc.robot.subsystems.Lights;
 import frc.robot.util.EquationUtil;
 import frc.robot.util.GravityGainsCalculator;
-import frc.robot.subsystems.Lights;
 
 public class Pivot extends SubsystemBase {
     public enum MotionMagicProfile {
@@ -78,7 +85,7 @@ public class Pivot extends SubsystemBase {
     private MotionMagicProfile currentMotionMagicProfile;
 
     private final TalonFX pivot, intake;
-    private final ServoChannel upRatchet, downRatchet;
+    // private final ServoChannel upRatchet, downRatchet;
     private final MotionMagicExpoVoltage request;
 
     private final GravityGainsCalculator gravityGainsCalculator = new GravityGainsCalculator(
@@ -143,13 +150,13 @@ public class Pivot extends SubsystemBase {
                         .withSupplyCurrentLimit(Constants.PivotConstants.CURRENT_LIMIT))
         );
 
-        upRatchet = Constants.SERVO_HUB.getServoChannel(Constants.PivotConstants.UP_RATCHET_CHANNEL);
-        upRatchet.setEnabled(true);
-        upRatchet.setPowered(true);
+        // upRatchet = Constants.SERVO_HUB.getServoChannel(Constants.PivotConstants.UP_RATCHET_CHANNEL);
+        // upRatchet.setEnabled(true);
+        // upRatchet.setPowered(true);
 
-        downRatchet = Constants.SERVO_HUB.getServoChannel(Constants.PivotConstants.DOWN_RATCHET_CHANNEL);
-        downRatchet.setEnabled(true);
-        downRatchet.setPowered(true);
+        // downRatchet = Constants.SERVO_HUB.getServoChannel(Constants.PivotConstants.DOWN_RATCHET_CHANNEL);
+        // downRatchet.setEnabled(true);
+        // downRatchet.setPowered(true);
 
         request = new MotionMagicExpoVoltage(getTarget());
 
@@ -232,13 +239,13 @@ public class Pivot extends SubsystemBase {
         return currentG;
     }
 
-    public double getUpRatchetStateValue() {
-        return upRatchet.getPulseWidth();
-    }
+    // public double getUpRatchetStateValue() {
+    //     return upRatchet.getPulseWidth();
+    // }
 
-    public double getDownRatchetStateValue() {
-        return downRatchet.getPulseWidth();
-    }
+    // public double getDownRatchetStateValue() {
+    //     return downRatchet.getPulseWidth();
+    // }
 
     public boolean isAtState(State state) {
         return Math.abs(state.position - getPosition()) < Constants.PivotConstants.AT_TARGET_TOLERANCE;
@@ -401,8 +408,8 @@ public class Pivot extends SubsystemBase {
 
         Lights.setLights((validStartPosition()) && DriverStation.isDisabled());
 
-        upRatchet.setPulseWidth(getUpRatchetPulseWidth());
-        downRatchet.setPulseWidth(getDownRatchetPulseWidth());
+        // upRatchet.setPulseWidth(getUpRatchetPulseWidth());
+        // downRatchet.setPulseWidth(getDownRatchetPulseWidth());
 
         if (currentState == State.PREPARE_CLIMB || cageIntakeOverride) {
             intake.set(0.6);

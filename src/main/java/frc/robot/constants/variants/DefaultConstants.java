@@ -26,7 +26,6 @@ import com.ctre.phoenix6.swerve.SwerveModuleConstantsFactory;
 import com.pathplanner.lib.config.RobotConfig;
 import com.pathplanner.lib.path.PathConstraints;
 import com.revrobotics.servohub.ServoChannel;
-import com.revrobotics.servohub.ServoHub;
 
 import edu.wpi.first.math.Matrix;
 import edu.wpi.first.math.VecBuilder;
