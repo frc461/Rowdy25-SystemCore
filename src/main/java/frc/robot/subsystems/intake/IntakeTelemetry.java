@@ -1,5 +1,7 @@
 package frc.robot.subsystems.intake;
 
+// import dev.doglog.DogLog;
+
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoubleArrayPublisher;
 import edu.wpi.first.networktables.DoubleEntry;
@@ -44,6 +46,8 @@ public class IntakeTelemetry {
     }
 
     // private void logValues() {
+
+
     //     DogLog.log("IntakeRGBReading", intake.getColorReading());
     //     DogLog.log("IntakeHasCoral", intake.hasCoral());
     //     DogLog.log("IntakeBeamBreakBroken", intake.beamBreakBroken());

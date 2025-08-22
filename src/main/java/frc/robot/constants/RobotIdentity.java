@@ -11,7 +11,7 @@ import frc.robot.util.MacAddress;
 public enum RobotIdentity {
     TEST("00-80-2F-18-50-1F"),
     ALPHA("00-80-2F-34-07-F0"),
-    ROWDY("00-80-2F-33-9F-37"),
+    ROWDY("00-11-22-68-06-98"),
     SIM("");
 
     final String mac;
@@ -21,13 +21,12 @@ public enum RobotIdentity {
 
     private static RobotIdentity getIdentity() {
         String mac = MacAddress.getMACAddress();
+        for (RobotIdentity identity : RobotIdentity.values()) {
+            if (identity.mac.equals(mac)) {
+                return identity;
+            }
+        }
         return ROWDY;
-        // for (RobotIdentity identity : RobotIdentity.values()) {
-        //     if (identity.mac.equals(mac)) {
-        //         return identity;
-        //     }
-        // }
-        // return SIM;
     }
 
     public static void initializeConstants() {

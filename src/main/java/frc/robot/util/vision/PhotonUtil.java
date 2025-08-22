@@ -14,7 +14,6 @@ import org.photonvision.targeting.PhotonTrackedTarget;
 
 import java.util.List;
 import java.util.Optional;
-// import java.util.concurrent.atomic.AtomicReference;
 
 public final class PhotonUtil {
     public static void updateResults(Rotation2d heading) {

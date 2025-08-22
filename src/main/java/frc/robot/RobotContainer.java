@@ -1,7 +1,5 @@
 package frc.robot;
 
-import javax.sound.sampled.ReverbType;
-
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.FollowPathCommand;
 import com.pathplanner.lib.commands.PathfindingCommand;
@@ -13,7 +11,6 @@ import com.pathplanner.lib.pathfinding.Pathfinding;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.GenericHID;
-import edu.wpi.first.wpilibj.PowerDistribution;
 import edu.wpi.first.wpilibj2.command.*;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
 import frc.robot.autos.AutoManager;
@@ -45,8 +42,8 @@ public class RobotContainer {
         // DogLog.setPdh(new PowerDistribution(0, 0, PowerDistribution.ModuleType.kRev));
         
         Pathfinding.setPathfinder(new LocalADStar());
-        PathfindingCommand.warmupCommand().schedule();
-        FollowPathCommand.warmupCommand().schedule();
+        CommandScheduler.getInstance().schedule(PathfindingCommand.warmupCommand());
+        CommandScheduler.getInstance().schedule(FollowPathCommand.warmupCommand());
     }
 
     private void configurePathPlannerNamedCommands() {

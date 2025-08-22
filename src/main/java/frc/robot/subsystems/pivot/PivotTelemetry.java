@@ -1,5 +1,7 @@
 package frc.robot.subsystems.pivot;
 
+// import dev.doglog.DogLog;
+
 import edu.wpi.first.networktables.BooleanPublisher;
 import edu.wpi.first.networktables.DoublePublisher;
 import edu.wpi.first.networktables.NetworkTable;
@@ -57,4 +59,5 @@ public class PivotTelemetry {
     //     DogLog.log("PivotIsAtTarget", pivot.isAtTarget());
     //     DogLog.log("PivotNearTarget", pivot.nearTarget());
     // }
- }
+}
+

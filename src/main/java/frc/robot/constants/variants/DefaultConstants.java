@@ -116,8 +116,8 @@ public final class DefaultConstants {
     public static final int ONE_MILLION = 1_000_000;
     public static final double DEADBAND = 0.1;
 
-//     public static final int SERVO_HUB_ID = 54;
-//     public static final ServoHub SERVO_HUB = new ServoHub(0, SERVO_HUB_ID);
+    public static final int SERVO_HUB_ID = 54;
+    public static final ServoHub SERVO_HUB = new ServoHub(1, SERVO_HUB_ID);
 
     public static final class AutoConstants {
         public static final RobotConfig ROBOT_CONFIG;
@@ -245,7 +245,7 @@ public final class DefaultConstants {
         private static final double ROTOR_TO_PULLEY_RATIO = 11.57;
         private static final double PULLEY_CIRCUMFERENCE = 7.065;
         public static final double ROTOR_TO_INCH_RATIO = ROTOR_TO_PULLEY_RATIO / PULLEY_CIRCUMFERENCE;
-        // private static final double STAGE_2_LOAD_LBS = 28.44;
+        private static final double STAGE_2_LOAD_LBS = 28.44;
         public static final double MASS_LBS = 23.0132625;
         public static final double COM_TO_STAGE_2_RATIO = 0.509767;
         public static final double STAGE_3_LIMIT = 22;

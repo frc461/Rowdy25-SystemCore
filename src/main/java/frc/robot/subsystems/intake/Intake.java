@@ -1,22 +1,23 @@
 package frc.robot.subsystems.intake;
 
-import com.ctre.phoenix6.configs.*;
-import com.ctre.phoenix6.hardware.TalonFX;
+import java.util.function.DoubleConsumer;
 
+import com.ctre.phoenix6.configs.AudioConfigs;
+import com.ctre.phoenix6.configs.CurrentLimitsConfigs;
+import com.ctre.phoenix6.configs.MotorOutputConfigs;
+import com.ctre.phoenix6.configs.TalonFXConfiguration;
+import com.ctre.phoenix6.hardware.TalonFX;
 import com.reduxrobotics.canand.CanandEventLoop;
 import com.reduxrobotics.sensors.canandcolor.Canandcolor;
 import com.reduxrobotics.sensors.canandcolor.ColorPeriod;
 import com.reduxrobotics.sensors.canandcolor.ProximityPeriod;
+
 import edu.wpi.first.math.filter.Debouncer;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-
 import edu.wpi.first.wpilibj2.command.button.Trigger;
-import frc.robot.subsystems.Lights;
-
 import frc.robot.constants.Constants;
-
-import java.util.function.DoubleConsumer;
+import frc.robot.subsystems.Lights;
 
 public class Intake extends SubsystemBase {
     public enum State {
@@ -51,7 +52,7 @@ public class Intake extends SubsystemBase {
     public DoubleConsumer setProximityObjectDetectionThreshold = threshold -> proximityObjectDetectionThreshold = threshold;
 
     public Intake() {
-        intake = new TalonFX(Constants.IntakeConstants.MOTOR_ID);
+        intake = new TalonFX(Constants.IntakeConstants.MOTOR_ID, "can_s1");
 
         intake.getConfigurator().apply(new TalonFXConfiguration()
                 .withMotorOutput(new MotorOutputConfigs()
@@ -64,7 +65,7 @@ public class Intake extends SubsystemBase {
                         .withAllowMusicDurDisable(true)));
 
         CanandEventLoop.getInstance();
-        canandcolor = new Canandcolor(Constants.IntakeConstants.SENSOR_ID);
+        canandcolor = new Canandcolor(Constants.IntakeConstants.SENSOR_ID, "socketcan:can_s1");
         canandcolor.setSettings(
                 canandcolor.getSettings()
                         .setAlignProximityFramesToIntegrationPeriod(true)
@@ -74,8 +75,8 @@ public class Intake extends SubsystemBase {
                         .setDigoutFramePeriod(0.02)
         );
         canandcolor.setLampLEDBrightness(0.0);
-        beamBreak = new DigitalInput(Constants.IntakeConstants.BEAMBREAK_DIO_PORT);
-        currentState = State.IDLE;
+         beamBreak = new DigitalInput(Constants.IntakeConstants.BEAMBREAK_DIO_PORT);
+         currentState = State.IDLE;
 
         hasAlgaeOrCoralStuck = new Trigger(() -> Math.abs(getCurrent()) > 40.0).debounce(0.1, Debouncer.DebounceType.kRising);
     }
