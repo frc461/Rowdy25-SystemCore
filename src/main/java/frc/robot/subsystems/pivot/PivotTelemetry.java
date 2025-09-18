@@ -60,4 +60,3 @@ public class PivotTelemetry {
     //     DogLog.log("PivotNearTarget", pivot.nearTarget());
     // }
 }
-

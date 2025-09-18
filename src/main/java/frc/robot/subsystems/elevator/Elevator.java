@@ -139,7 +139,7 @@ public class Elevator extends SubsystemBase {
     public double getTarget() {
         return getState() == State.MANUAL ? lastManualPosition : getState().position;
     }
- 
+
     public boolean lowerSwitchTriggered() {
         return Constants.IDENTITY != RobotIdentity.ROWDY && !lowerSwitch.get();
     }

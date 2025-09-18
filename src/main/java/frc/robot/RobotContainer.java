@@ -40,7 +40,7 @@ public class RobotContainer {
 
         // DogLog.setOptions(new DogLogOptions(() -> false, false, true, true, false, 5000, () -> false));
         // DogLog.setPdh(new PowerDistribution(0, 0, PowerDistribution.ModuleType.kRev));
-        
+
         Pathfinding.setPathfinder(new LocalADStar());
         CommandScheduler.getInstance().schedule(PathfindingCommand.warmupCommand());
         CommandScheduler.getInstance().schedule(FollowPathCommand.warmupCommand());

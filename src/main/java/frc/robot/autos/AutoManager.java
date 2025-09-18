@@ -73,7 +73,7 @@ public final class AutoManager {
                 currentCommand = generateAutoEventLooper(robotStates).cmd();
             }
         });
-        
+
         MultipleChooser<String> scoringOrAlgaeLocationsChooser = new MultipleChooser<>();
         for (FieldUtil.Reef.ScoringLocation location : FieldUtil.Reef.ScoringLocation.values()) {
             for (FieldUtil.Reef.Level level : FieldUtil.Reef.Level.values()) {
